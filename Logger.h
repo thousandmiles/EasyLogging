@@ -120,10 +120,8 @@ public:
         }
     }
 
-    void log(const char* message, LogLevel level) 
+    void log(const char* message, LogLevel level, const std::source_location location = std::source_location::current()) 
     {
-        const std::source_location location = std::source_location::current();
-
         auto now = std::chrono::system_clock::now();
         auto nowSec = std::chrono::floor<std::chrono::seconds>(now);
         auto zonedTime = std::chrono::zoned_time{ std::chrono::current_zone(), nowSec };
